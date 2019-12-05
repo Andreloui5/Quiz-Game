@@ -10,36 +10,53 @@
 </head>
 <!-- Background img -->
 <body class="bg">
-    <!-- Container for page -->
-    <div class="container">
-        <!-- Jumbotron (intro to the game) -->
-        <div class="jumbotron row m-5">
-            <h1 class="col-12 display-4 p-2 text-center">Welcome to the Game!</h1>
-            <br>
-            <p class="col-12 lead text-center">Get ready for a whole bunch of Disney trivia. Will you come out on top?</p>
-            <hr class="my-4">
-            <br>
-            <div class="offset-4"></div>
-            <!-- Button to begin the game -->
-            <a class="col-4 btn btn-primary btn-lg text-center mt-5 mb-1" id="begin" role="button">Let's Go!</a>
-            <div class="offset-4"></div>
-        </div>
+  <!-- Container for page -->
+  <div class="container h-100 d-flex">
+      <!-- Jumbotron (intro to the game) -->
+      <div class="jumbotron my-auto row m-5">
+          <h1 class="col-12 display-4 p-2 text-center">Welcome to the Game!</h1>
+          <br>
+          <p class="col-12 lead text-center">Get ready for a whole bunch of Disney trivia. Will you come out on top?</p>
+          <hr class="my-4">
+          <br>
+          <div class="offset-4"></div>
+          <!-- Button to begin the game -->
+          <a class="col-4 btn btn-primary btn-lg text-center mt-5 mb-1" id="begin" role="button">Let's Go!</a>
+          <div class="offset-4"></div>
+      </div>
 
-        <!-- Flip Cards for questions -->
-        <div class=""></div>
+  <!-- Countdown (found at https://codepen.io/FlorinPop17/pen/LzYNWa. Originally created by Florin Pop */) -->
+  <div id="countdown" class="collapse">
+    <div class="counter rounded-circle p-5">
+      <div class="nums">
+        <span class="in">3</span>
+        <span>2</span>
+        <span>1</span>
+      </div>
+      <h4>Game Starts In:</h4>
+    </div>
+    <div class="final rounded-circle p-5">
+      <h1>GO</h1>
+    </div>
+  </div>
+
+
+      <!-- Flip Cards for questions -->
+      <div class="collapse">
         <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
-              </div>
-              <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-              </div>
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h1>John Doe</h1>
+              <p>Architect & Engineer</p>
+              <p>We love that guy</p>
             </div>
           </div>
-    </div>
+        </div>
+      </div>    
+  </div>
 
 
 
