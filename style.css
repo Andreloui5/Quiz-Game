@@ -8,11 +8,12 @@ body, html {
   
     /* Full height */
     height: 100%;
-  
+
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: -1;
   }
 
 .jumbotron {
@@ -27,17 +28,6 @@ body, html {
   margin: 0 auto;
 }
 
-/* .cardDiv {
-  width: 300px;
-  height: 400px;
-  z-index: 1;
-  background: rgba(221, 221, 221, 0.6);
-} */
-
-.display {
-  display: none;
-}
-
 /* This section of CSS was found at https://codepen.io/FlorinPop17/pen/LzYNWa and was adapted to fit. Originally created by Florin Pop */
 
   .counter {
@@ -46,14 +36,12 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1000;
     background: rgba(221, 221, 221, 0.6); 
   }
 
   .counter.hide {
     transform: translate(-50%, -50%) scale(0);
     animation: hide .2s ease-out;
-    z-index: 1000;
   }
 
   @keyframes hide {
@@ -70,7 +58,6 @@ body, html {
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 1000;
     background: rgba(221, 221, 221, 0.6); 
     transform: translate(-50%, -50%) scale(0);
   }
@@ -78,7 +65,6 @@ body, html {
   .final.show {
     transform: translate(-50%, -50%) scale(1);
     animation: show .3s ease-in;
-    z-index: 1000;
   }
 
   @keyframes show {
@@ -165,8 +151,8 @@ body, html {
 /* Clock feature for main game page */
 
 .clock  {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background: rgba(221, 221, 221, 0.6); 
 }
 

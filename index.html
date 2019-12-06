@@ -11,7 +11,7 @@
 <!-- Background img -->
 <body class="bg">
   <!-- Container for page -->
-  <div class="container h-100 d-flex">
+  <div class="container">
       <!-- Jumbotron (intro to the game) -->
       <div class="jumbotron my-auto row m-5">
           <h1 class="col-12 display-4 p-2 text-center">Welcome to the Game!</h1>
@@ -25,9 +25,45 @@
           <div class="offset-4"></div>
       </div>
   </div>
+  <!-- Game main page -->
+  <div id="gameMainPage" class="container collapse">
+      <span class="row ">
+        <!-- Clock -->
+        <div id="clock" class="card col-md-4">
+          <h1>Placeholder</h1>
+        </div>
+        <!-- Text Box -->
+        <div class="card scol-md-4">
+          <h3>Answer the question below:</h3>
+        </div>
+        <div class="offset-md-4">
+        </div>
+      </span>
+      <!-- Question Area -->
+      <span class="row ">
+          <div class="offset-md-4">
+          </div>
+        <div class="card col-md-4 m-5 p-3">
+          <h3>Title</h3>
+            <button>Option 1</button>
+            <button>Option 2</button>
+            <button>Option 3</button>
+            <button>Option 4</button>
+        </div>
+        <div class="offset-md-4">
+        </div>
+      </span>
+    </div>
+
+
+
+
+
+
+
   <!-- Countdown (found at https://codepen.io/FlorinPop17/pen/LzYNWa. Originally created by Florin Pop */) -->
-  <div class="h-100">
-    <div id="countdown" class="rounded display">
+  <div class="container">
+    <div id="countdown" class="rounded collapse">
     <!-- card rounded col-12"> -->
       <div class="counter rounded p-5">
         <div class="nums">
@@ -42,33 +78,6 @@
       </div>
     </div>
   </div>
-  <!-- Game main page -->
-  <wrapper class="row">
-    <!-- Clock -->
-    <div id="clock" class="col-md-4">
-      <h1>Placeholder</h1>
-    </div>
-    <!-- Text Box -->
-    <div class="col-md-4">
-      <h3>Answer the question below:</h3>
-    </div>
-    <div class="offset-md-4">
-    </div>
-  </wrapper>
-  <!-- Question Area -->
-  <wrapper class="row">
-      <div class="offset-md-4">
-      </div>
-    <div class="card col-md-4">
-      <h3>Title</h3>
-      <button>Option 1</button>
-      <button>Option 2</button>
-      <button>Option 3</button>
-      <button>Option 4</button>
-    </div>
-    <div class="offset-md-4">
-    </div>
-  </wrapper>
 
   <!-- Flip Cards for questions -->
   <!-- <div class="collapse">

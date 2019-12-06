@@ -8,6 +8,7 @@ var countdownEl = document.querySelector('#countdown');
 var nums = document.querySelectorAll('.nums span');
 var counter = document.querySelector('.counter');
 var finalMessage = document.querySelector('.final');
+var gameEl = document.getElementById('gameMainPage');
 var secondsToGo = 4
 
 //From flip-cards
@@ -21,39 +22,22 @@ beginEl.addEventListener("click", function(event) {
   event.preventDefault();
   jumbotronEl.classList.add("collapse");
   //shows the wrapper holding the countdown
-  countdownEl.classList.remove("display");
+  countdownEl.classList.remove("collapse");
   //begins countdown function
   runAnimationGo();
   //sets timer to clear countdown from screen
   var timerInterval = setInterval(function() {
     secondsToGo--;
     if(secondsToGo === 0) {
-      countdownEl.classList.add("display");
+      countdownEl.classList.add("collapse");
+      gameEl.classList.remove("collapse")
     }
   }, 1000);
 });
 
 // Step 2 —— Countdown to play starting
 
-// Timer appears (large) beneath text, and counts down "3..2..1.."
-//(The function runAnimationGo (and associated variables) were found at https://codepen.io/FlorinPop17/pen/LzYNWa and adapted to fit. Originally created by Florin Pop)
-
-function runAnimationGo() {
-	nums.forEach((num, idx) => {
-		const penultimate = nums.length - 1;
-		num.addEventListener('animationend', (e) => {
-			if(e.animationName === 'goIn' && idx !== penultimate){
-				num.classList.remove('in'); 
-				num.classList.add('out');
-			} else if (e.animationName === 'goOut' && num.nextElementSibling){
-				num.nextElementSibling.classList.add('in');
-			} else {
-				counter.classList.add('hide');
-				finalMessage.classList.add('show');
-			}
-		});
-	});
-}
+// Timer appears (large) beneath text, and counts down "3..2..1.." Happens on event "click" of Jumbotron
 
 //Step 3 –– The game itself
 
@@ -98,3 +82,26 @@ function runAnimationGo() {
 // post user name (if given, else include 'unknown' placeholder for name) and score, if > current highscores.
 
 // post large button to 'play again', which loops to Step 3.
+
+
+
+
+
+//(The function runAnimationGo (and associated variables) were found at https://codepen.io/FlorinPop17/pen/LzYNWa and adapted to fit. Originally created by Florin Pop)
+
+function runAnimationGo() {
+	nums.forEach((num, idx) => {
+		const penultimate = nums.length - 1;
+		num.addEventListener('animationend', (e) => {
+			if(e.animationName === 'goIn' && idx !== penultimate){
+				num.classList.remove('in'); 
+				num.classList.add('out');
+			} else if (e.animationName === 'goOut' && num.nextElementSibling){
+				num.nextElementSibling.classList.add('in');
+			} else {
+				counter.classList.add('hide');
+				finalMessage.classList.add('show');
+			}
+		});
+	});
+}
