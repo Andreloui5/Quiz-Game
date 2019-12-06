@@ -21,14 +21,14 @@ beginEl.addEventListener("click", function(event) {
   event.preventDefault();
   jumbotronEl.classList.add("collapse");
   //shows the wrapper holding the countdown
-  countdownEl.classList.remove("collapse");
+  countdownEl.classList.remove("display");
   //begins countdown function
   runAnimationGo();
   //sets timer to clear countdown from screen
   var timerInterval = setInterval(function() {
     secondsToGo--;
     if(secondsToGo === 0) {
-      countdownEl.classList.add("collapse");
+      countdownEl.classList.add("display");
     }
   }, 1000);
 });
@@ -43,7 +43,7 @@ function runAnimationGo() {
 		const penultimate = nums.length - 1;
 		num.addEventListener('animationend', (e) => {
 			if(e.animationName === 'goIn' && idx !== penultimate){
-				num.classList.remove('in');
+				num.classList.remove('in'); 
 				num.classList.add('out');
 			} else if (e.animationName === 'goOut' && num.nextElementSibling){
 				num.nextElementSibling.classList.add('in');
