@@ -17,6 +17,7 @@ body, html {
   }
 
 .jumbotron {
+    margin-top: 100px;
     background: rgba(221, 221, 221, 0.6); 
 } 
 

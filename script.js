@@ -45,7 +45,15 @@ beginEl.addEventListener("click", function(event) {
 
 // Add questions to 'questions.js' and link to it.
 
-// Timer
+// Clock
+// let scoreClock = 
+// let secondsLeft = 75
+// var clockTimer = setInterval(function() {
+//   secondsToGo--;
+//   if(secondsToGo === 0) {
+//   }
+// }, 1000);
+
 
 // Total time should = 15 seconds per question.
 
