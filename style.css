@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body, html {
     height: 100%;
   }
@@ -151,15 +155,17 @@ body, html {
 
 /* Clock feature for main game page */
 
-.clock  {
-  width: 150px;
-  height: 150px;
+#clockBox  {
+  padding-top: 10px;
+  text-align: center;
   background: rgba(221, 221, 221, 0.6); 
 }
 
-.section .h1 {
+#clock {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
+  font-size: 70px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 

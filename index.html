@@ -25,12 +25,15 @@
           <div class="offset-4 "></div>
       </div>
   </div>
+
   <!-- Game main page -->
   <div id="gameMainPage" class="container collapse">
       <span class="row mt-5 p-4">
         <!-- Clock -->
-        <div id="clock" class="card col-md-3">
-          <h1>Placeholder</h1>
+        <div class="offset col-md-1"></div>
+        <div id="clockBox" class="col-md-2 rounded">
+          <h3>Time Left</h3>
+          <h1 id="clock"></h1>
         </div>
         <!-- Text Box -->
         <div class="card scol-md-5">
@@ -45,10 +48,10 @@
           </div>
         <div class="card col-md-5 m-5 p-3">
           <h3>Title</h3>
-            <button>Option 1</button>
-            <button>Option 2</button>
-            <button>Option 3</button>
-            <button>Option 4</button>
+            <button value="1">Option 1</button>
+            <button value="2">Option 2</button>
+            <button value="3">Option 3</button>
+            <button value="4">Option 4</button>
         </div>
         <div class="offset-md-4">
         </div>
@@ -109,6 +112,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="questions.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

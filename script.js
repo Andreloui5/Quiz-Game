@@ -9,6 +9,7 @@ var nums = document.querySelectorAll('.nums span');
 var counter = document.querySelector('.counter');
 var finalMessage = document.querySelector('.final');
 var gameEl = document.getElementById('gameMainPage');
+var clockEl = document.getElementById('clock');
 var secondsToGo = 4
 
 //From flip-cards
@@ -46,14 +47,16 @@ beginEl.addEventListener("click", function(event) {
 // Add questions to 'questions.js' and link to it.
 
 // Clock
-// let scoreClock = 
-// let secondsLeft = 75
-// var clockTimer = setInterval(function() {
-//   secondsToGo--;
-//   if(secondsToGo === 0) {
-//   }
-// }, 1000);
 
+let clockSecondsLeft = (questionBank.length * 15)
+var clockTimer = setInterval(function() {
+  clockSecondsLeft--;
+  clockEl.textContent = clockSecondsLeft;
+  if(clockSecondsLeft === 0) {
+    gameEl.classList.add("collapse");
+    return
+  }
+}, 1000);
 
 // Total time should = 15 seconds per question.
 
