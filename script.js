@@ -47,18 +47,18 @@ beginEl.addEventListener("click", function(event) {
 // Add questions to 'questions.js' and link to it.
 
 // Clock
-
+// Total time = 15 seconds per question.
 let clockSecondsLeft = (questionBank.length * 15)
+
 var clockTimer = setInterval(function() {
   clockSecondsLeft--;
   clockEl.textContent = clockSecondsLeft;
+  // if clock = 0, ends game and collapses game screen
   if(clockSecondsLeft === 0) {
     gameEl.classList.add("collapse");
     return
   }
 }, 1000);
-
-// Total time should = 15 seconds per question.
 
 // Time remaining at the end = user's score. 
 
@@ -67,8 +67,24 @@ var clockTimer = setInterval(function() {
 // Question Cards
 
 // Make template card with area for text, 4 answers (a,b,c,d), and buttons to click
-
 // Populate the cards with questions and answers: (for loop over array, pulling in data to card?)
+
+
+
+let title = document.getElementById("title");
+let btn1 = document.getElementById("btn1");
+let btn2 = document.getElementById("btn2");
+let btn3 = document.getElementById("btn3");
+let btn4 = document.getElementById("btn4");
+
+for (i=0; i < questionBank.length; i++) {
+  // populate question box
+  title.textContent = questionBank[i].title;
+  btn1.textContent = questionBank[i].choices[0];
+  btn2.textContent = questionBank[i].choices[1];
+  btn3.textContent = questionBank[i].choices[2];
+  btn4.textContent = questionBank[i].choices[3];
+};
 
 // Buttons should:
   // if (correct) {
