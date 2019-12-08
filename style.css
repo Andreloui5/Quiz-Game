@@ -182,8 +182,26 @@ body, html {
   vertical-align: middle;
 }
 
+/* Final scores page */
+#endScreen > h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  text-align: center;
+}
 
+#finalScore {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 70px;
+  color: #3498db;
+  text-align: center;
+  vertical-align: middle;
+}
 
+#scoreCard {
+  margin-top: 80px;
+  align-content: center;
+  text-align: center;
+}
 
 
 

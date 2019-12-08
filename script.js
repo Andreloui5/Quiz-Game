@@ -30,7 +30,13 @@ let currentQuestionIndex = 0;
 let correctSound = new Audio("assets/Correct.mp3");
 let incorrectSound = new Audio("assets/Incorrect.mp3");
 let finishSound = new Audio("assets/Finsh.mp3");
-
+// Final/Score Screen
+let endScreenEl = document.getElementById("endScreen");
+let finalScoreEl = document.getElementById("finalScore");
+let saveHighScoreEl = document.getElementById("saveHighScore");
+let userNameEl = document.getElementById("userName");
+let pastHighScoresEl = document.getElementById("pastHighScores");
+let allHighScores = [];
 
 // Welcome Screen
 
@@ -94,7 +100,8 @@ function checkAnswer(userAnswer) {
   if (currentQuestionIndex === questionBank.length-1) {
     finishSound.play();
     gameEl.classList.add("collapse");
-    localStorage.setItem("score", clockSecondsLeft);
+    endScreenEl.classList.remove("collapse");
+    endScreen();
   }
   else {
     //If the answer was correct, these things happen
@@ -126,6 +133,44 @@ function checkAnswer(userAnswer) {
 // post user name (if given, else include 'unknown' placeholder for name) and score, if > current highscores.
 
 // post large button to 'play again', which loops to Step 3.
+
+// function endScreen() {
+//   localStorage.setItem("score", clockSecondsLeft);
+//   finalScoreEl.textContent = localStorage.getItem("score");
+  
+// }
+function populateScores () {
+  // clear out list
+  pastHighScoresEl.innerHTML = "";
+  //get store high scores from local storage
+  //create li elements for each high score, and put highscores on the page
+  for (let i = 0; i < allHighScores.length; i++) {
+    let highScore = allHighScores[i];
+    let li = document.createElement("li");
+    li.textContent = highScore;
+    li.setAttribute("data-index", i);
+    pastHighScoresEl.appendChild(li);
+  }
+  // create li elements for each high score, and put highscores on the page
+
+}
+
+
+saveHighScoreEl.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let name = userNameEl.value.trim();
+      if (name === "") {
+        return
+      }
+    
+});
+
+
+
+
+
+
 
 
 
