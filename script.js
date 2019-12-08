@@ -32,7 +32,7 @@ let incorrectSound = new Audio("assets/Incorrect.mp3");
 let finishSound = new Audio("assets/Finsh.mp3");
 
 
-// Step 1 —— Welcome Screen
+// Welcome Screen
 
 // When the 'Go' button is clicked, collapses jumbotron element
 beginEl.addEventListener("click", function(event) {
@@ -46,57 +46,41 @@ beginEl.addEventListener("click", function(event) {
   var timerInterval = setInterval(function() {
     secondsToGo--;
     if(secondsToGo === 0) {
+      //collapses the countdown section
       countdownEl.classList.add("collapse");
+      //shows the game's main page
       gameEl.classList.remove("collapse")
     }
   }, 1000);
-  // starts game time
+
+  // starts the game timer
   timeStart();
 
-  // starts game main
+  // populates the main screen with questions/answers
   populate();
   
 });
 
-
-
-
-// Step 2 —— Countdown to play starting
-
-// Timer appears (large) beneath text, and counts down "3..2..1.." Happens on event "click" of Jumbotron
-
-//Step 3 –– The game itself
-
-// For the page layout, we'll need: something to display time remaining, the question cards, and a link to the highscores page.
-
-// Add questions to 'questions.js' and link to it.
-
-// Clock
-// Total time = 15 seconds per question.
-
+// The game timer:
 function timeStart () {
   var clockTimer = setInterval(function() {
+  //clock will decrement each interval
   clockSecondsLeft--;
+  //this actually places the current time on the page
   clockEl.textContent = clockSecondsLeft;
   // if clock = 0, ends game and collapses game screen
   if(clockSecondsLeft === 0) {
     gameEl.classList.add("collapse");
     return
   }
+  //interval set to 1 second
 }, 1000);
 };
-// Time remaining at the end = user's score. 
-
-// Score then needs to be saved to localStorage, where it can be retrieved for highscores.
-
-// Question Cards
-
-// Make template card with area for text, 4 answers (a,b,c,d), and buttons to click
-// Populate the cards with questions and answers: (for loop over array, pulling in data to card?)
 
 function populate() {
   // populate question box
     let i = questionBank[currentQuestionIndex];
+    // pulls information from questions.js and the array(questionBank).
     questionText.textContent = i.title;
     choiceA.textContent = i.choices[0];
     choiceB.textContent = i.choices[1];
@@ -104,52 +88,34 @@ function populate() {
     choiceD.textContent = i.choices[3];
 };
 
+//When a button is clicked, this function checks the button against the value of 'answer' in questionBank
 function checkAnswer(userAnswer) {
+  // When all the questions have been answered, these things happen
   if (currentQuestionIndex === questionBank.length-1) {
     finishSound.play();
     gameEl.classList.add("collapse");
     localStorage.setItem("score", clockSecondsLeft);
   }
   else {
+    //If the answer was correct, these things happen
     if (userAnswer === questionBank[currentQuestionIndex].answer) {
       correctSound.play();
       clockSecondsLeft += 3;
+      //each time a button is clicked, a new question populates the screen
       currentQuestionIndex++;
       populate();
     }
+    //these things happen for incorrect answers
     else if (userAnswer !== questionBank[currentQuestionIndex].answer) {
       incorrectSound.play();
       clockSecondsLeft -= 15;
+      //each time a button is clicked, a new question populates the screen
       currentQuestionIndex++;
       populate();
     }
 }
 };
 
-function endingScreen () {
-  if (currentQuestionIndex > questionBank.length) {
-    finishSound.play();
-    gameEl.classList.add("collapse");
-  }
-}
-
-// function finalScore() {
-//   localStorage.
-// }
-
-// Buttons should:
-  // if (correct) {
-  //   happy sound
-  //   change button from 'letterChoice' to 👍🏻
-  //   score/time ++ 2 or 3 seconds
-  // }
-  // else {
-  //   sad sound
-  //   change button to 🙁
-  //   score/time -- 15 seconds
-  // }
-
-// collapse all elements from Game
 
 // Step 4 —— Highscores
 
