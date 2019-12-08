@@ -9,5 +9,10 @@ var questionBank = [
       choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
       answer: "parentheses"
     },
+    {
+        title: "Who is the fairest of them all?",
+        choices: ["puppies", "the evil queen", "Snow White", "the 7 dwarfs"],
+        answer: "Snow White"
+      },
     ///etc.
   ];

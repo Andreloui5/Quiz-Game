@@ -11,6 +11,12 @@ var finalMessage = document.querySelector('.final');
 var gameEl = document.getElementById('gameMainPage');
 var clockEl = document.getElementById('clock');
 var secondsToGo = 4
+let submitEl = document.querySelector(".submitter");
+let title = document.getElementById("title");
+let choiceA = document.getElementById("A");
+let choiceB = document.getElementById("B");
+let choiceC = document.getElementById("C");
+let choiceD = document.getElementById("D");
 
 //From flip-cards
 
@@ -34,6 +40,26 @@ beginEl.addEventListener("click", function(event) {
       gameEl.classList.remove("collapse")
     }
   }, 1000);
+  // starts game time
+  timeStart();
+
+  // adds initial question to answer (taken from questions.js)
+  title.textContent = questionBank[0].title;
+  btn1.textContent = questionBank[0].choices[0];
+  btn2.textContent = questionBank[0].choices[1];
+  btn3.textContent = questionBank[0].choices[2];
+  btn4.textContent = questionBank[0].choices[3];
+  
+  let i = 1
+  submitEl.addEventListener("click", function () {
+    event.preventDefault()
+    title.textContent = questionBank[i].title;
+    btn1.textContent = questionBank[i].choices[0];
+    btn2.textContent = questionBank[i].choices[1];
+    btn3.textContent = questionBank[i].choices[2];
+    btn4.textContent = questionBank[i].choices[3];
+    i ++;
+  })
 });
 
 // Step 2 —— Countdown to play starting
@@ -48,9 +74,12 @@ beginEl.addEventListener("click", function(event) {
 
 // Clock
 // Total time = 15 seconds per question.
-let clockSecondsLeft = (questionBank.length * 15)
 
-var clockTimer = setInterval(function() {
+function timeStart () {
+  //Our initial time gives 15 seconds per question, and allows for the four second countdown to the game. Because of this it's easy to add to the initial 'go' event button click.
+  let clockSecondsLeft = ((questionBank.length * 15) + 4)
+
+  var clockTimer = setInterval(function() {
   clockSecondsLeft--;
   clockEl.textContent = clockSecondsLeft;
   // if clock = 0, ends game and collapses game screen
@@ -59,7 +88,7 @@ var clockTimer = setInterval(function() {
     return
   }
 }, 1000);
-
+};
 // Time remaining at the end = user's score. 
 
 // Score then needs to be saved to localStorage, where it can be retrieved for highscores.
@@ -69,22 +98,17 @@ var clockTimer = setInterval(function() {
 // Make template card with area for text, 4 answers (a,b,c,d), and buttons to click
 // Populate the cards with questions and answers: (for loop over array, pulling in data to card?)
 
-
-
-let title = document.getElementById("title");
-let btn1 = document.getElementById("btn1");
-let btn2 = document.getElementById("btn2");
-let btn3 = document.getElementById("btn3");
-let btn4 = document.getElementById("btn4");
-
-for (i=0; i < questionBank.length; i++) {
+function populate() {
   // populate question box
-  title.textContent = questionBank[i].title;
-  btn1.textContent = questionBank[i].choices[0];
-  btn2.textContent = questionBank[i].choices[1];
-  btn3.textContent = questionBank[i].choices[2];
-  btn4.textContent = questionBank[i].choices[3];
+    let i = 1
+    title.textContent = questionBank[i].title;
+    btn1.textContent = questionBank[i].choices[0];
+    btn2.textContent = questionBank[i].choices[1];
+    btn3.textContent = questionBank[i].choices[2];
+    btn4.textContent = questionBank[i].choices[3];
+    i++;
 };
+
 
 // Buttons should:
   // if (correct) {
