@@ -11,15 +11,25 @@ var finalMessage = document.querySelector('.final');
 var gameEl = document.getElementById('gameMainPage');
 var clockEl = document.getElementById('clock');
 var secondsToGo = 4
+
+//For Game Timer
+//Our initial time gives 15 seconds per question, and allows for the four second countdown to the game. Because of this it's easy to add to the initial 'go' event button click.
+let clockSecondsLeft = ((questionBank.length * 15) + 4)
+
+//For populating questions
 let submitEl = document.querySelector(".submitter");
-let title = document.getElementById("title");
+let questionText = document.getElementById("title");
 let choiceA = document.getElementById("A");
 let choiceB = document.getElementById("B");
 let choiceC = document.getElementById("C");
 let choiceD = document.getElementById("D");
-
-//From flip-cards
-
+// Our questions.js choices
+let QuestionIndex = questionBank.length - 1;
+let currentQuestionIndex = 0;
+//Audio Samples
+let correctSound = new Audio("assets/Correct.mp3");
+let incorrectSound = new Audio("assets/Incorrect.mp3");
+let finishSound = new Audio("assets/Finsh.mp3");
 
 
 // Step 1 —— Welcome Screen
@@ -43,24 +53,13 @@ beginEl.addEventListener("click", function(event) {
   // starts game time
   timeStart();
 
-  // adds initial question to answer (taken from questions.js)
-  title.textContent = questionBank[0].title;
-  btn1.textContent = questionBank[0].choices[0];
-  btn2.textContent = questionBank[0].choices[1];
-  btn3.textContent = questionBank[0].choices[2];
-  btn4.textContent = questionBank[0].choices[3];
+  // starts game main
+  populate();
   
-  let i = 1
-  submitEl.addEventListener("click", function () {
-    event.preventDefault()
-    title.textContent = questionBank[i].title;
-    btn1.textContent = questionBank[i].choices[0];
-    btn2.textContent = questionBank[i].choices[1];
-    btn3.textContent = questionBank[i].choices[2];
-    btn4.textContent = questionBank[i].choices[3];
-    i ++;
-  })
 });
+
+
+
 
 // Step 2 —— Countdown to play starting
 
@@ -76,9 +75,6 @@ beginEl.addEventListener("click", function(event) {
 // Total time = 15 seconds per question.
 
 function timeStart () {
-  //Our initial time gives 15 seconds per question, and allows for the four second countdown to the game. Because of this it's easy to add to the initial 'go' event button click.
-  let clockSecondsLeft = ((questionBank.length * 15) + 4)
-
   var clockTimer = setInterval(function() {
   clockSecondsLeft--;
   clockEl.textContent = clockSecondsLeft;
@@ -100,15 +96,46 @@ function timeStart () {
 
 function populate() {
   // populate question box
-    let i = 1
-    title.textContent = questionBank[i].title;
-    btn1.textContent = questionBank[i].choices[0];
-    btn2.textContent = questionBank[i].choices[1];
-    btn3.textContent = questionBank[i].choices[2];
-    btn4.textContent = questionBank[i].choices[3];
-    i++;
+    let i = questionBank[currentQuestionIndex];
+    questionText.textContent = i.title;
+    choiceA.textContent = i.choices[0];
+    choiceB.textContent = i.choices[1];
+    choiceC.textContent = i.choices[2];
+    choiceD.textContent = i.choices[3];
 };
 
+function checkAnswer(userAnswer) {
+  if (currentQuestionIndex === questionBank.length-1) {
+    finishSound.play();
+    gameEl.classList.add("collapse");
+    localStorage.setItem("score", clockSecondsLeft);
+  }
+  else {
+    if (userAnswer === questionBank[currentQuestionIndex].answer) {
+      correctSound.play();
+      clockSecondsLeft += 3;
+      currentQuestionIndex++;
+      populate();
+    }
+    else if (userAnswer !== questionBank[currentQuestionIndex].answer) {
+      incorrectSound.play();
+      clockSecondsLeft -= 15;
+      currentQuestionIndex++;
+      populate();
+    }
+}
+};
+
+function endingScreen () {
+  if (currentQuestionIndex > questionBank.length) {
+    finishSound.play();
+    gameEl.classList.add("collapse");
+  }
+}
+
+// function finalScore() {
+//   localStorage.
+// }
 
 // Buttons should:
   // if (correct) {
