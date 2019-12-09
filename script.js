@@ -126,24 +126,19 @@ function checkAnswer(userAnswer) {
 
 // Step 4 —— Highscores
 
-// Display table w highscores and names
-
-// include input area underneath where user can add name
-
-// post user name (if given, else include 'unknown' placeholder for name) and score, if > current highscores.
-
-// post large button to 'play again', which loops to Step 3.
-
+// At the end of the game, this function adds the large blue score value to the page, and clears the clocktimer
 function endScreen() {
   localStorage.setItem("score", clockSecondsLeft);
   finalScoreEl.textContent = localStorage.getItem("score");
+  clearInterval(clockTimer);
 }
 
+//Initializes score page
 initalScores();
 
+//function that pulls the highscores from local storage, checks to see if there are values, and then populates the highscore field.
 function initalScores (){
 let storedScores = JSON.parse(localStorage.getItem("highScores"));
-
 
   if (storedScores !== null) {
     allHighScores = storedScores;
@@ -151,12 +146,12 @@ let storedScores = JSON.parse(localStorage.getItem("highScores"));
   }
   populateScores();
 }
-
+//This function actually puts stored highscores on the page
 function populateScores () {
   // clear out list
   pastHighScoresEl.innerHTML = "";
  
-  //create li elements for each high score, and put highscores on the page
+  //create li elements for each high score, and appends highscores to the page
   for (let i = 0; i < allHighScores.length; i++) {
     let highScore = allHighScores[i].score;
     let name = allHighScores[i].name
@@ -166,12 +161,13 @@ function populateScores () {
     pastHighScoresEl.appendChild(li);
   }
 }
-
+//Stores all highscores
 function storeHighScores() {
   console.log("this is our item" + allHighScores);
   localStorage.setItem("highScores", JSON.stringify(allHighScores));
 }
-//on save button click
+
+//Adds save-button functions on click
 saveHighScoreEl.addEventListener("click", function (event) {
     event.preventDefault();
 //trims entry and provides 'unkown response' if field is empty
@@ -179,25 +175,19 @@ saveHighScoreEl.addEventListener("click", function (event) {
       if (name === "") {
         name === "unknown";
       }
-//pushes 
+    let scoreValue = localStorage.getItem("score");
+//pushes values to allHighScores array
     allHighScores.push(
       {
         "name":name, 
-        "score":clockSecondsLeft
+        "score":scoreValue
       }
     );
+    //stores values
     storeHighScores();
+    //repopulates field
     populateScores();
 });
-
-
-
-
-
-
-
-
-
 
 
 //(The function runAnimationGo (and associated variables) were found at https://codepen.io/FlorinPop17/pen/LzYNWa and adapted to fit. Originally created by Florin Pop)
