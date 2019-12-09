@@ -134,36 +134,60 @@ function checkAnswer(userAnswer) {
 
 // post large button to 'play again', which loops to Step 3.
 
-// function endScreen() {
-//   localStorage.setItem("score", clockSecondsLeft);
-//   finalScoreEl.textContent = localStorage.getItem("score");
-  
-// }
+function endScreen() {
+  localStorage.setItem("score", clockSecondsLeft);
+  finalScoreEl.textContent = localStorage.getItem("score");
+}
+
+initalScores();
+
+function initalScores (){
+let storedScores = JSON.parse(localStorage.getItem("highScores"));
+
+
+  if (storedScores !== null) {
+    allHighScores = storedScores;
+   
+  }
+  populateScores();
+}
+
 function populateScores () {
   // clear out list
   pastHighScoresEl.innerHTML = "";
-  //get store high scores from local storage
+ 
   //create li elements for each high score, and put highscores on the page
   for (let i = 0; i < allHighScores.length; i++) {
-    let highScore = allHighScores[i];
+    let highScore = allHighScores[i].score;
+    let name = allHighScores[i].name
     let li = document.createElement("li");
-    li.textContent = highScore;
+    li.textContent = name + ": " + highScore;
     li.setAttribute("data-index", i);
     pastHighScoresEl.appendChild(li);
   }
-  // create li elements for each high score, and put highscores on the page
-
 }
 
-
+function storeHighScores() {
+  console.log("this is our item" + allHighScores);
+  localStorage.setItem("highScores", JSON.stringify(allHighScores));
+}
+//on save button click
 saveHighScoreEl.addEventListener("click", function (event) {
     event.preventDefault();
-
+//trims entry and provides 'unkown response' if field is empty
     let name = userNameEl.value.trim();
       if (name === "") {
-        return
+        name === "unknown";
       }
-    
+//pushes 
+    allHighScores.push(
+      {
+        "name":name, 
+        "score":clockSecondsLeft
+      }
+    );
+    storeHighScores();
+    populateScores();
 });
 
 
