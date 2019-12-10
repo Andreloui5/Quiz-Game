@@ -77,7 +77,8 @@ function timeStart () {
   // if clock = 0, ends game and collapses game screen
   if(clockSecondsLeft === 0) {
     gameEl.classList.add("collapse");
-    return
+    endScreenEl.classList.remove("collapse");
+    endScreen()
   }
   //interval set to 1 second
 }, 1000);
