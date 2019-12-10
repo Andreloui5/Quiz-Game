@@ -4,6 +4,7 @@ This application is designed to walk the user through a series of trivia questio
 
 ## Interface
 As this is a game, I designed the UI to be fun but not distracting. There is an animated countdown before the gameplay begins.
+
 ![UI with Initial Animation](assets/Document.gif "UI with Initial Animation")
 
 Additionally, during gameplay, each button plays a sound (one sound for correct answers, and one for incorrect.)
